@@ -28,6 +28,6 @@ button.addEventListener("click", function(){
                 humidity: data.daily[i +1].humidity
             }
     }
-    })
+    }
     })
 })
