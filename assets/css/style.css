@@ -1,4 +1,4 @@
-* {
+/* * {
     box-sizing: border-box;
   }
   @import url('https://fonts.googleapis.com/css?family=Metrophobic&display=swap');
@@ -15,7 +15,7 @@
   }
   
   /* The navigation bar */
-  .navbar {
+/* .navbar {
     width: 100%;
     padding: 0px 0px;
     margin: 0 auto;
@@ -76,9 +76,9 @@
     color: black;
     text-align: center;
     cursor: pointer; /* Pointer/hand icon */
-    width: flex;
-    display: block; /* Make the buttons appear below each other */
-  }
+width: flex;
+display: block; /* Make the buttons appear below each other */
+/* }
   
   .btn:focus, .btn:active {
     outline: none;
@@ -104,7 +104,7 @@
     float: left;
     width: 20%;
     padding: 10px;
-    margin: 0px; !important;
+    margin: 0px; 
     background: #4682B4;
     border: none;
     color: #00072d;
@@ -205,4 +205,4 @@
   #weatherIconSix {
     width: 100%;
     height: auto;
-  }
+  } */
