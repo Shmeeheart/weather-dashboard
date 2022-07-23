@@ -27,7 +27,7 @@ var getWeatherData = function () {
         })
         .then(function (data) {
           console.log(data);
-          var uvi = document.getElementById('uv-index');
+          var uvIndex = document.getElementById('uv-index');
           document.getElementById('city-name').innerText = city;
           document.getElementById('temp').innerText =
             'Temp: ' + data.current.temp;
@@ -35,6 +35,7 @@ var getWeatherData = function () {
             'Wind: ' + data.current.wind_speed;
           document.getElementById('humidity').innerText =
             'Humidity: ' + data.current.humidity;
+          var uvi = data.current.uvi;
           if (uvi <= 2) {
             uvIndex.style.backgroundColor = 'green';
           }
@@ -48,7 +49,7 @@ var getWeatherData = function () {
             uvIndex.style.backgroundColor = 'red';
           }
 
-          uvi.innerText = 'UVI: ' + data.current.uvi;
+          uvIndex.innerText = 'UVI: ' + uvi;
           document.getElementById('icon').src =
             'http://openweathermap.org/img/wn/' +
             data.current.weather[0].icon +
