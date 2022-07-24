@@ -1,9 +1,17 @@
 var button = document.getElementById('btn');
 var input = document.getElementById('input');
 var fiveDayEl = document.getElementById('fiveDay');
+var searchHistoryArr = JSON.parse(localStorage.getItem('searchHistory')) || [];
+var historyEl = document.getElementById('history');
+var historyButton = document.getElementById('button');
 
-var getWeatherData = function () {
-  var city = input.value;
+var getWeatherData = function (event) {
+  if (event.target.matches('a')) {
+    var city = event.target.textContent;
+  } else {
+    var city = input.value;
+    searchHistory(city);
+  }
   var geoUrl =
     'http://api.openweathermap.org/geo/1.0/direct?q=' +
     city +
@@ -59,6 +67,25 @@ var getWeatherData = function () {
     });
 };
 
+function searchHistory(city) {
+  searchHistoryArr.push(city);
+  localStorage.setItem('searchHistory', JSON.stringify(searchHistoryArr));
+}
+
+function pastsearchHistory() {
+  historyEl.innerHTML = ' ';
+  var ul = document.createElement('ul');
+  for (let i = 0; i < searchHistoryArr.length; i++) {
+    var li = document.createElement('li');
+    var pastSearch = document.createElement('a');
+    pastSearch.href = '#';
+    pastSearch.textContent = searchHistoryArr[i];
+    li.append(pastSearch);
+    ul.append(li);
+  }
+  historyEl.append(ul);
+}
+
 function fiveDay(data) {
   console.log(data);
   for (let index = 1; index < 6; index++) {
@@ -99,3 +126,5 @@ function fiveDay(data) {
 }
 
 button.addEventListener('click', getWeatherData);
+historyButton.addEventListener('click', pastsearchHistory);
+historyEl.addEventListener('click', getWeatherData);
